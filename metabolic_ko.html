@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html>
+<head>
+    <title>Project1 Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo">Project 2</a>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul class="links">
+            <li><a href="index_ko.html">Main</a></li>
+            <li><a href="voronoi_ko.html"> Project1</a></li>
+            <li class ="active"><a href="metabolic_ko.html "> Project2</a></li>
+            <li><a href="account_ko.html "> Project3</a></li>
+            <li><a href="employee_ko.html">Project4</a></li>
+        </ul>
+        <div class="language-toggle">
+            <a href="metabolic.html">EN</a>
+        </div>
+        <ul class="icons">
+            <li><a href="http://github.com/sookki0527" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+        <section class="post">
+            <header class="major">
+
+                <p> Project 2</p>
+                <h1>대사 플럭스 경로 시각화 도구 (FBA 및 Dijkstra 기반)</h1>
+                <h3>Python + GraphQL + FBA를 활용한 생명공학자를 위한 대사 네트워크 시각화 툴</h3>
+
+                </h3>
+
+                <p>
+                    이 프로젝트는 **대사 플럭스 경로(metabolic flux pathways)**를 시각화하는 웹 기반 구로,
+                    생명공학자들이 **Flux Balance Analysis (FBA)**를 통해 최적의 생물학적 경로를 분석하는 데 도움을 주기 위해 설계되었습니다.
+                    Python 3, Strawberry GraphQL, SQLAlchemy를 활용하여 플럭스 분포를 모델링하고도 계산하며,
+                    경로 최적화를 위해 **Dijkstra 알고리즘**을 통합하였습니다.
+                </p>
+
+            </header>
+            <div class="row">
+                <div class="column2">
+                    <img src = "./images/metabolic/Home.png" style = "width:100%" class = "center">
+                </div>
+                <br>
+<!--                <div class="column2">-->
+<!--                    <img src = "./images/account/.png" style = "width:100%" class = "center">-->
+<!--                </div>-->
+            </div>
+            <p>
+                합성생물학 워크플로우에 적합하도록 설계된 **프로덕션급 대사 네트워크 분석 도구**입니다.
+                이 애플리케이션은 **BiGG 모델**, **GraphQL API**, 고급 그래프 알고리즘을 활용하여
+                FBA 및 Dijkstra 알고리즘 기반으로 **반응 플럭스 및 대사 경로를 시뮬레이션, 분석, 시각화**합니다.
+                Python(FastAPI, SQLAlchemy), Strawberry, React로 구축되었습니다.
+            </p>
+
+
+
+
+
+            <h2>기술 스택 (Tech Stack)</h2>
+            <ul>
+                <li><strong>Python 3</strong>: 계산 및 API 로직의 핵심 백엔드 언어</li>
+                <li><strong>FastAPI</strong>: 비동기 백엔드 API 구축을 위한 웹 프레임워크</li>
+                <li><strong>Strawberry GraphQL</strong>: Python 기반의 스키마 우선(GraphQL-first) 서버</li>
+                <li><strong>COBRApy</strong>: BiGG 모델을 활용한 대사 모델 시뮬레이션 및 FBA(플럭스 균형 분석)</li>
+                <li><strong>NetworkX</strong>: Dijkstra 알고리즘을 이용한 최단 경로 계산용 그래프 알고리즘 라이브러리</li>
+                <li><strong>SQLAlchemy + SQLite</strong>: 모델 및 플럭스 데이터를 위한 ORM 및 경량 관계형 데이터베이스</li>
+                <li><strong>React + TypeScript</strong>: 정적 타입 기반의 컴포넌트 및 모듈화된 프론트엔드 인터페이스</li>
+                <li><strong>Apollo Client</strong>: 프론트엔드-백엔드 간 효율적인 GraphQL 통신을 위한 클라이언트</li>
+                <li><strong>React Bootstrap</strong>: 반응형 레이아웃 및 UI 스타일링</li>
+                <li><strong>vis-network.js</strong>: 대사 경로 그래프의 인터랙티브 시각화</li>
+            </ul>
+
+            <h2>주요 기능 (Key Features)</h2>
+            <ul>
+                <li><strong>목표 반응 설정 (Set Objective)</strong>: 사용자가 최적화할 타겟 반응을 선택</li>
+                <li><strong>FBA 계산 (FBA Calculation)</strong>: Python 및 COBRA 모델을 활용한 플럭스 균형 분석 수행</li>
+                <li><strong>플럭스 시각화 (Flux Visualization)</strong>: 플럭스 상위 10개 반응을 시각화하고 전체 통계 제공</li>
+                <li><strong>Dijkstra 최단 경로 (Dijkstra Shortest Path)</strong>: 시작 대사체로부터 목표 생성물까지의 최단 경로 계산</li>
+                <li><strong>기질 추천 (Source Recommendation)</strong>: 높은 플럭스를 유도하는 유의미한 기질(입력물질)을 자동 제안</li>
+            </ul>
+
+            <img src = "./images/metabolic/SelectOF.png" style = "width:100%" class = "center">
+            <img src = "./images/metabolic/SelectOP.png" style = "width:100%" class = "center">
+            <img src = "./images/metabolic/SelectOR.png" style = "width:100%" class = "center">
+
+            <br>
+            <br>
+            <h2>구조 (Structure)</h2>
+
+            <h4>모델 및 데이터베이스</h4>
+            <ul>
+                <li><strong>BiGG 모델(iJO1366)</strong>을 BiGG Models Database에서 불러옴</li>
+                <ul style="list-style-type: none;">
+                    <li><strong>iJO1366</strong>: <i>E. coli</i> K-12 MG1655의 유전체 기반 대사 모델</li>
+                    <li>약 1800개의 반응, 1300개의 유전자, 1100개의 대사산물로 구성됨</li>
+                    <li>FBA (플럭스 균형 분석), 유전자 제거 시뮬레이션 등에 활용</li>
+                </ul>
+                <li><strong>SQLAlchemy</strong> 비동기 엔진 사용</li>
+                <li>JSON 모델 파일로부터 데이터 시드(seed) 생성</li>
+                <li><strong>사용 기술:</strong> Python 3, SQLAlchemy, SQLite</li>
+            </ul>
+
+            <h4>GraphQL 구조</h4>
+            <ul>
+                <li>타입: <code>Pathway</code>, <code>Reaction</code>, <code>Flux</code>, <code>Metabolite</code></li>
+                <li>해결자(Resolvers): 비동기 SQLAlchemy를 통해 관계형 데이터 조회</li>
+                <li><strong>사용 기술:</strong> FastAPI, Strawberry GraphQL, 비동기 SQLAlchemy</li>
+            </ul>
+
+            <h4>플럭스 균형 분석 (Flux Balance Analysis, COBRApy 사용)</h4>
+            <ul>
+                <li>사용자가 <strong>목표 반응(Objective Reaction)</strong>을 선택하여 최대화</li>
+                <li><code>COBRApy</code>를 통해 FBA 계산 수행</li>
+                <li>모든 반응의 플럭스 값을 반환</li>
+                <li>Mutation을 통해 계산된 플럭스를 DB에 저장</li>
+                <li><strong>사용 기술:</strong> COBRApy, JSON 모델, FastAPI, Strawberry</li>
+            </ul>
+
+            <h4>Dijkstra 최단 경로 계산 (NetworkX 사용)</h4>
+            <ul>
+                <li>출발 대사체에서 목표 대사체까지의 최단 경로 계산</li>
+                <li><strong>출발(Source):</strong> 선택된 반응에서 계수가 음수인 대사체</li>
+                <li><strong>목표(Target):</strong> 선택된 반응에서 계수가 양수인 대사체</li>
+                <li>경로의 가중치는 FBA 결과에서 도출된 플럭스 크기로 설정됨</li>
+                <li><strong>사용 기술:</strong> NetworkX, 플럭스 데이터, Python 3</li>
+            </ul>
+
+            <img src="./images/metabolic/FBAResult2.png" style="width:100%" class="center">
+            <br><br>
+            <img src="./images/metabolic/ShortestPathResult.png" style="width:100%" class="center">
+            <br><br>
+
+            <h2>GraphQL 백엔드 코드 샘플 (Strawberry + SQLAlchemy)</h2>
+
+                <pre><code class="language-graphql">
+query GetReactionsByPathway($pathwayId: Int!) {
+  reactionsByPathway(pathwayId: $pathwayId) {
+    id
+    entryId
+    name
+    equation
+    subsystem
+    lowerbound
+    upperbound
+    metaboliteLinks {
+      metaboliteId
+      coeff
+    }
+    fluxLinks {
+      fluxId
+    }
+  }
+}
+</code></pre>
+                <pre><code class="language-python">
+@strawberry.type
+class ReactionType:
+    id: int
+    entry_id: Optional[str] = None
+    name: str
+    equation: str
+    subsystem: str
+    lowerbound: int
+    upperbound: int
+    metabolite_links: Optional[List[MetaboliteReactionLinkType]] = None
+    pathway_links: Optional[List[PathwayReactionLinkType]] = None
+    flux_links: Optional[List[FluxReactionLinkType]] = None
+
+<h3 style="font-weight: 800;">Flux Balance Analysis (FBA) Logic</h3>
+
+<pre><code class="language-python">
+async def run_fba(info: Info, entry_id: str) -> List[FluxType]:
+    model_path = get_model_path()
+    model = load_json_model(model_path)
+    rxn_id = entry_id
+
+    model.objective = rxn_id
+
+    solution = pfba(model)
+    fluxInputs: List[FluxType] = []
+    async with async_session() as session:
+        for entry_id, flux_value in solution.fluxes.items():
+            reaction = await get_reaction_by_entry_id(info, entry_id)
+            if reaction is None:
+                continue
+            reactionId = reaction.id
+            flux_model = FluxModel(value=flux_value)
+            session.add(flux_model)
+            await session.flush()
+
+            link_model = FluxReactionLink(
+                flux_id=flux_model.id,
+                reaction_id=reaction.id
+            )
+            session.add(link_model)
+
+            flux_type = FluxType(
+                id=flux_model.id,
+                value=flux_model.value,
+                flux_links=[
+                    FluxReactionLinkType(
+                        flux_id=flux_model.id,
+                        reaction_id=reaction.id
+                    )
+                ]
+            )
+            fluxInputs.append(flux_type)
+
+        await session.commit()
+
+    return fluxInputs
+</code></pre>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+
+            <h3>More detailed code </h3>
+            <ul class="icons alt">
+
+                <li><a href="http://github.com/sookki0527" class="icon brands alt fa-github"><span class="label">GitHub</span></a>
+            </ul>
+
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <section>
+            <form method="post" action="#">
+                <div class="fields">
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" />
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" />
+                    </div>
+                    <div class="field">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" rows="3"></textarea>
+                    </div>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Send Message" /></li>
+                </ul>
+            </form>
+        </section>
+        <section class="split contact">
+            <section class="alt">
+                <h3>Address</h3>
+                <p>9300 Corporate Blvd Rockville 1341<br />
+                    MD 20850 </p>
+            </section>
+            <section>
+                <h3>Phone</h3>
+                <p>303-875-8115</a></p>
+            </section>
+            <section>
+                <h3>Email</h3>
+                <p>sookki1205@gmail.com</a></p>
+            </section>
+            <section>
+                <h3>Social</h3>
+                <ul class="icons alt">
+
+                    <li><a href="http://github.com/sookki0527" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                </ul>
+            </section>
+        </section>
+    </footer>
+
+    <!-- Copyright -->
+    <div id="copyright">
+        <ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
+</div>
+</body>
+
+
+</html>
