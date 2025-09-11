@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project 1 Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <a href="index.html" class="logo">Project 1</a>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul class="links">
+            <li><a href="index.html">Main</a></li>
+            <li class="active"><a href="rag.html">Project 1</a></li>
+            <li><a href="voronoi.html">Project 2</a></li>
+            <li><a href="metabolic.html">Project 3</a></li>
+            <li><a href="account.html">Project 4</a></li>
+            <li><a href="employee.html">Project 5</a></li>
+        </ul>
+        <div class="language-toggle">
+            <a href="account_ko.html">KR</a>
+        </div>
+        <ul class="icons">
+            <li><a href="http://github.com/sookki0527" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+        <section class="post">
+            <header class="major">
+                <p>Project 1</p>
+                <h1>Latest News Summarizer & Question Generator</h1>
+                <p>
+                    This project implements a RAG pipeline based on ElasticSearch and LangChain, connecting to the latest documents and providing question generation and accurate answers grounded in the given context.
+                </p>
+            </header>
+
+            <div class="row">
+                <div class="column2">
+                    <img src="./images/rag/rag_result.png" style="width:100%" class="center">
+                </div>
+                <br>
+                <div class="column2">
+                    <img src="./images/rag/rag_result3.png" style="width:100%" class="center">
+                </div>
+                <div class="column2">
+                    <img src="./images/rag/rag_result4.png" style="width:100%" class="center">
+                </div>
+            </div>
+
+            <p>
+                This project uses a Retrieval-Augmented Generation (RAG) architecture: indexing the latest documents in ElasticSearch, retrieving related context with LangChain retrievers, and constraining the LLM to respond only based on that context.
+            </p>
+
+            <section>
+                <h2>Tech Stack</h2>
+                <ul>
+                    <li><strong>RAG</strong>: BM25 + (optional) vector search, source document citation</li>
+                    <li><strong>LangChain</strong>: Text Splitter (RecursiveCharacterTextSplitter), MultiQuery Retriever, ChatPromptTemplate</li>
+                    <li><strong>Flask (Python)</strong>: REST/SSE API, CORS, (deployment) gunicorn/waitress</li>
+                    <li><strong>Elastic Cloud (Elasticsearch)</strong>: single index, sparse/dense field mapping</li>
+                    <li><strong>Selenium</strong>: headless crawling, cleaning/deduplication</li>
+                </ul>
+
+                <h2>Structure</h2>
+
+                <h4>Data Crawling & JSON Mapping</h4>
+                <ul>
+                    <li>Crawl latest news/documents with Selenium → extract body/title/URL/published date</li>
+                    <li>Remove HTML tags, normalize spaces, and map to JSON schema</li>
+                </ul>
+
+                <h4>Text Splitting with LangChain</h4>
+                <ul>
+                    <li>RecursiveCharacterTextSplitter (e.g., chunk_size=800, chunk_overlap=120)</li>
+                    <li>Preserve metadata: source, url, published_at, etc.</li>
+                </ul>
+
+                <h4>Elasticsearch Indexing</h4>
+                <ul>
+                    <li>Index: rag-docs</li>
+                    <li>Fields: content(text), source(keyword), url(keyword), published_at(date), embedding(dense_vector)</li>
+                    <li>Upsert to prevent duplication, reindex on update date for quick refresh of new docs</li>
+                </ul>
+                <img src="./images/rag/elastic.png" style="width:100%" class="center" />
+
+                <h4>GPT Model Integration & Prompts/Questions</h4>
+                <ul>
+                    <li>Model: gpt-4o-mini</li>
+                    <li>System prompt: “Answer only within the given context; if no evidence, say ‘I don’t know.’”</li>
+                    <li>Example questions: “Summarize the text”, “Which university is the author affiliated with?”, “Extract only the key numbers”</li>
+                </ul>
+
+                <h3>Flask</h3>
+                <ul>
+                    <li>Python backend API connecting to frontend (e.g., POST /api/ask, GET /api/stream for SSE)</li>
+                </ul>
+            </section>
+
+            <h3>More detailed code </h3>
+            <ul class="icons alt">
+                <li><a href="http://github.com/sookki0527" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <section>
+            <form method="post" action="#">
+                <div class="fields">
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" />
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" />
+                    </div>
+                    <div class="field">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" rows="3"></textarea>
+                    </div>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Send Message" /></li>
+                </ul>
+            </form>
+        </section>
+
+        <section class="split contact">
+            <section class="alt">
+                <h3>Address</h3>
+                <p>9300 Corporate Blvd Rockville 1341<br />MD 20850</p>
+            </section>
+            <section>
+                <h3>Phone</h3>
+                <p><a href="#">303-875-8115</a></p>
+            </section>
+            <section>
+                <h3>Email</h3>
+                <p><a href="#">sookki1205@gmail.com</a></p>
+            </section>
+            <section>
+                <h3>Social</h3>
+                <ul class="icons alt">
+                    <li><a href="http://github.com/sookki0527" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+                </ul>
+            </section>
+        </section>
+    </footer>
+
+    <!-- Copyright -->
+    <div id="copyright">
+        <ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
