@@ -88,7 +88,7 @@
 			<h3> 학습과정 예시 </h3>
             <pre>
                 <code>
-                    class Conv1DClassifier(nn.Module):
+class Conv1DClassifier(nn.Module):
 
     def __init__(self, in_channels: int = 1, num_classes: int = 2):
         super().__init__()
@@ -116,7 +116,7 @@
                 </code>
             </pre>
 			<pre><code>
- criterion = nn.CrossEntropyLoss()
+        criterion = nn.CrossEntropyLoss()
         optimizer = optim.Adam(model.parameters(), lr=args.lr)
         mlflow.log_param("model", type(model).__name__)
         mlflow.log_param("in_channels", in_channels)
@@ -151,12 +151,7 @@
 				
 			</div>
 
-			<img src="./images/model_result_placeholder.png" alt="model result" style="width:100%" class="center">
-			<h3>More detailed code</h3>
-			<ul class="icons alt">
-
-				<li><a href="http://github.com/sookki0527" class="icon brands alt fa-github"><span class="label">GitHub</span></a>
-			</ul>
+			
 
 		</section>
 
