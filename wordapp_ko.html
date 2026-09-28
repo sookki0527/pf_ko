@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html>
+<head>
+  <title>Project 1 Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+  <!-- Header -->
+  <header id="header">
+    <a href="index.html" class="logo">Project 1</a>
+  </header>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <ul class="links">
+
+      <li><a href="index_ko.html">Main</a></li>
+      <li  class ="active"><a href="wordapp_ko.html">Project1</a></li>
+      <li><a href="rag_ko.html">Project2</a></li>
+      <li><a href="mlflow_ko.html">Project3</a></li>
+      <li><a href="voronoi_ko.html"> Project4</a></li>
+      <li><a href="metabolic_ko.html "> Project5</a></li>
+      <li><a href="account_ko.html "> Project6</a></li>
+      <li><a href="employee_ko.html">Project7</a></li>
+
+    </ul>
+    <ul class="icons">
+      <li><a href="http://github.com/sookki0527" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Main -->
+  <div id="main">
+
+    <!-- Post -->
+    <section class="post">
+      <header class="major">
+
+        <p>프로젝트 1</p>
+        <h1> 영어 어휘 학습을 위한 의미 기반 이미지 생성 및 학습 관리 시스템 </h1>
+        <p>
+          이 프로젝트는 두 가지 주요 기능을 제공합니다. 첫째, 사용자가 입력한 영어 단어에 대한 의미 기반 이미지를 생성하여 시각적 학습을 지원합니다. 둘째, 사용자가 학습한 단어를 관리하고 복습할 수 있는 시스템을 제공합니다.
+          두 개의 마이크로 서비스로 구현되어 있으며, 각 기능은 독립적으로 운영될 수 있고, 각 서비스는 RESTful API를 통해 통신합니다. 또한, 사용자 인터페이스는 직관적이고 사용하기 쉽게 설계되어 있어 학습 경험을 향상시킵니다.
+
+      </header>
+      <div class="row">
+        <div class="column2">
+          <img src = "./images/word_app/word_image1.png" style = "width:100%" class = "center">
+        </div>
+        <br>
+        <div class="column2">
+          <img src = "./images/word_app/word_test_1.png" style = "width:100%" class = "center">
+        </div>
+      
+      </div>
+
+      <p>
+       
+        
+      </p>
+
+
+
+      <section>
+        <h2>기술 스택 (Tech Stack)</h2>
+       <ul>
+        <li><strong>Microservices Architecture</strong>: 기존 학습 서비스와 AI 이미지 생성 서비스를 독립 Spring Boot 애플리케이션으로 분리하여 각각의 REST API 및 포트로 구성</li>
+  <li><strong>Spring Boot (Java)</strong>: REST API 및 단어 의미·시각화 생성 로직 구현</li>
+  <li><strong>Spring Data JPA / MySQL</strong>: Word → WordSense → VisualConcept → VisualImage 도메인 모델링 및 데이터 저장</li>
+  <li><strong>Spring AI / OpenAI API</strong>: 의미별 VisualConcept 생성 및 AI 이미지 생성 파이프라인 구현</li>
+  <li><strong>React</strong>: 단어의 다중 의미 선택 및 의미별 시각화 이미지 학습 UI 구현</li>
+  <li><strong>Axios</strong>: 프론트엔드와 복수 Spring Boot 서비스 간 REST API 통신</li>
+  <li><strong>Git / GitHub</strong>: 버전 관리 및 프로젝트 소스 관리</li>
+</ul>
+
+        <h2>구조 (Structure)</h2>
+
+<h4>AI 기반 Visual Image 생성 서비스</h4>
+<ul>
+  <li>하나의 영어 단어에 대해 복수의 의미(WordSense)를 생성하고 데이터베이스에 저장</li>
+  <li>각 WordSense의 definition을 기반으로 의미에 대응하는 VisualConcept 생성</li>
+  <li>VisualConcept을 이미지 생성 모델에 전달하여 학습용 이미지를 생성하고 이미지 URL 및 메타데이터 저장</li>
+  <li>Word → WordSense → VisualConcept → VisualImage 구조로 의미별 시각화 데이터 관리</li>
+</ul>
+
+<h4>단어 시험 및 학습 관리 서비스</h4>
+<ul>
+  <li>사용자가 학습 및 시험을 진행할 단어장과 회차를 선택할 수 있는 기능 제공</li>
+  <li>시험 방식 선택 및 단어 테스트 진행 기능 구현</li>
+  <li>사용자별 학습 진행 상황과 시험 결과를 데이터베이스에 저장 및 관리</li>
+  <li>Visual Image 생성 서비스와 연동하여 단어의 의미별 시각 자료를 학습 과정에 제공</li>
+</ul>
+
+<h4>서비스 구성</h4>
+<ul>
+  <li><strong>Microservices Architecture</strong>: 학습·시험 관리 서비스와 AI 기반 Visual Image 생성 서비스를 독립적인 Spring Boot 애플리케이션으로 분리</li>
+  <li>각 서비스가 독립적인 REST API를 제공하도록 구성하고 React 클라이언트에서 Axios를 통해 연동</li>
+</ul>
+
+
+
+<div class="row">
+        <div class="column2">
+          <img src = "./images/word_app/word_image2.png" style = "width:100%" class = "center">
+        </div>
+         <div class="column2">
+          <img src = "./images/word_app/word_image3.png" style = "width:100%" class = "center">
+        </div>
+        
+        <br>
+        <div class="column2">
+          <img src = "./images/word_app/word_Test2.png" style = "width:100%" class = "center">
+        </div>
+      
+      </div>
+      <h3>More detailed code </h3>
+      <ul class="icons alt">
+
+        <li><a href="http://github.com/sookki0527" class="icon brands alt fa-github"><span class="label">GitHub</span></a>
+      </ul>
+
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <section>
+      <form method="post" action="#">
+        <div class="fields">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea name="message" id="message" rows="3"></textarea>
+          </div>
+        </div>
+        <ul class="actions">
+          <li><input type="submit" value="Send Message" /></li>
+        </ul>
+      </form>
+    </section>
+    <section class="split contact">
+      <section>
+        <h3>Email</h3>
+        <p><a href="#">sookki1205@gmail.com</a></p>
+      </section>
+      <section>
+        <h3>Social</h3>
+        <ul class="icons alt">
+
+          <li><a href="http://github.com/sookki0527" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+        </ul>
+      </section>
+    </section>
+  </footer>
+
+  <!-- Copyright -->
+  <div id="copyright">
+    <ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+  </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
+</div>
+</body>
+</html>
