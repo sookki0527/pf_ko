@@ -401,7 +401,100 @@ delaunay&lt;T&gt;::potentials(
     <p>새로운 LR 변을 기준으로 이웃과 후보를 다시 구하고, LL 검사, RR 검사, 다음 LR 변 선택 과정을 반복한다.</p>
     <p>이 반복은 한 번의 <code>potentials</code> 호출 안에서 수행한다. 최초의 하부 공통 접선에서 출발하여 더 이상 위쪽 후보가 없을 때까지 병합한다.</p>
   </section>
+<details class="implementation-code">
+      <summary>직접 구현한 델로네 병합 루프 보기</summary>
+      <pre><code class="language-cpp">while (true) {
+    // 매번 현재 기준변에 대한 후보를 새로 구한다.
+    std::optional&lt;Point&gt; leftCandidate;
+    std::optional&lt;Point&gt; rightCandidate;
 
+    std::vector&lt;Point&gt; left_neighbors =
+        findNeighbors(vertices1, np1, np1, np2);
+    std::vector&lt;Point&gt; right_neighbors =
+        findNeighbors(vertices2, np2, np1, np2);
+
+    // LL: 현재 왼쪽 끝점에 연결된 간선을 검사한다.
+    if (!left_neighbors.empty()) {
+        std::size_t k = 0;
+
+        while (k + 1 &lt; left_neighbors.size()) {
+            const Point C = left_neighbors[k];
+            const Point N = left_neighbors[k + 1];
+
+            if (!triangle.inCircle(np2, np1, C, N)) {
+                break;
+            }
+
+            _edges.erase(
+                std::remove_if(
+                    _edges.begin(), _edges.end(),
+                    [np1, C](const Edge&amp; edge) {
+                        return (edge.first == np1 &amp;&amp;
+                                edge.second == C) ||
+                               (edge.first == C &amp;&amp;
+                                edge.second == np1);
+                    }),
+                _edges.end());
+            ++k;
+        }
+
+        leftCandidate = left_neighbors[k];
+    }
+
+    // RR: 현재 오른쪽 끝점에 연결된 간선을 검사한다.
+    if (!right_neighbors.empty()) {
+        std::size_t k = 0;
+
+        while (k + 1 &lt; right_neighbors.size()) {
+            const Point C = right_neighbors[k];
+            const Point N = right_neighbors[k + 1];
+
+            if (!triangle.inCircle(np2, np1, C, N)) {
+                break;
+            }
+
+            _edges.erase(
+                std::remove_if(
+                    _edges.begin(), _edges.end(),
+                    [np2, C](const Edge&amp; edge) {
+                        return (edge.first == np2 &amp;&amp;
+                                edge.second == C) ||
+                               (edge.first == C &amp;&amp;
+                                edge.second == np2);
+                    }),
+                _edges.end());
+            ++k;
+        }
+
+        rightCandidate = right_neighbors[k];
+    }
+
+    // 유효한 후보가 양쪽 모두 없으면 병합을 종료한다.
+    if (!leftCandidate &amp;&amp; !rightCandidate) {
+        break;
+    }
+
+    if (!leftCandidate) {
+        np2 = *rightCandidate;
+    } else if (!rightCandidate) {
+        np1 = *leftCandidate;
+    } else {
+        const Point CL = *leftCandidate;
+        const Point CR = *rightCandidate;
+
+        // CR이 원(np2, np1, CL) 내부에 있으면 오른쪽 선택.
+        if (triangle.inCircle(np2, np1, CL, CR)) {
+            np2 = CR;
+        } else {
+            np1 = CL;
+        }
+    }
+
+    // 선택한 한쪽 끝점을 이동하여 새로운 LR 변을 추가한다.
+    _edges.emplace_back(np1, np2);
+}</code></pre>
+    </details>
+  </section>
   <section id="results">
     <h3>2.3. 결과 사진</h3>
     <p>다음은 실행 결과를 시각화한 그림이다. 정확성을 검증할 때에는 간선 교차 여부와 빈 외접원 조건을 함께 확인한다.</p>
