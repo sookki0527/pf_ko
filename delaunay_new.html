@@ -463,45 +463,7 @@ delaunay&lt;T&gt;::potentials(
 
 
 
-            
-<h3>코드</h3>
 
-
-
-
-
-            
-<pre><code class="language-cpp">void threading(){
-    thread_safe_queue&lt;TriangulationTask&gt; task_queue;
-    std::mutex results_mutex;
-
-    auto worker = [&amp;]() {
-        while (true) {
-            TriangulationTask task;
-            if (!task_queue.try_pop(task)) break;
-            triangulate(task);
-            std::lock_guard&lt;std::mutex&gt; lock(results_mutex);
-            results.push_back(std::move(task));
-        }
-    };
-
-    for(int i = 0; i &lt; N; i++){
-        TriangulationTask task;
-        task.input_file = "data/voronoi" + std::to_string(i+1) + ".cin";
-
-        std::ifstream in(task.input_file);
-        std::istream_iterator&lt;Point&gt; begin(in), end;
-        task.points = std::vector&lt;Point&gt;(begin, end);
-        task_queue.push(task);
-    }
-
-    std::vector&lt;std::thread&gt; threads;
-    for (int i = 0; i &lt; 4; ++i)
-        threads.emplace_back(worker);
-
-    for (auto&amp; t : threads)
-        t.join();
-}</code></pre><br>
 
             
 <div class="image-grid image-grid-two">
