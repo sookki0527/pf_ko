@@ -36,6 +36,20 @@
 			text-align: center;
 		}
 
+		.portfolio-url {
+			border-bottom: 0;
+			display: block;
+			font-family: _font(family-heading);
+			font-size: 1.75rem;
+			font-weight: _font(weight-heading);
+			font-style: normal;
+			letter-spacing: 0;
+			line-height: 1.2;
+			margin-top: 1.5rem;
+			max-width: 100%;
+			overflow-wrap: anywhere;
+		}
+
 		& + #header {
 			margin-top: -20rem;
 
@@ -106,6 +120,10 @@
 			p {
 				font-size: 1rem;
 				margin-top: 0rem;
+			}
+
+			.portfolio-url {
+				font-size: 1.25rem;
 			}
 
 			.actions {

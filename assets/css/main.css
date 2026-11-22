@@ -3457,6 +3457,20 @@ input, select, textarea {
 			text-align: center;
 		}
 
+		#intro .portfolio-url {
+			border-bottom: 0;
+			display: block;
+			font-family: "Source Sans Pro", Helvetica, sans-serif;
+			font-size: 1.75rem;
+			font-weight: 900;
+			font-style: normal;
+			letter-spacing: 0;
+			line-height: 1.2;
+			margin-top: 1.5rem;
+			max-width: 100%;
+			overflow-wrap: anywhere;
+		}
+
 		#intro + #header {
 			margin-top: -20rem;
 		}
@@ -3542,6 +3556,10 @@ input, select, textarea {
 				#intro p {
 					font-size: 1rem;
 					margin-top: 0rem;
+				}
+
+				#intro .portfolio-url {
+					font-size: 1.25rem;
 				}
 
 				#intro .actions {
